@@ -6,10 +6,10 @@ questions:
 - "Why use version control?"
 objectives:
 - "Understand the benefits of an automated version control system."
-- "Understand the difference between Git and GitHub."
+- "Understand the difference between Git and GitLab."
 keypoints:
 - "Git is a version control tool; one of many."
-- "GitHub is a repository hosting service; one of many."
+- "GitLab is an open source repository hosting service. We have our own instance running on Griffin"
 - "Use version control to store versions neatly, restore previous versions,
 understand what happened (and why), and always know which is the current version."
 ---
@@ -124,7 +124,7 @@ any kind of **text** file:
 - Data files
 - User documentation, manuals, and journal papers,  whether they be plain-text,
 LaTeX, XML, md etc
-- Have a look at some of the projects on [GitHub](https://github.com/explore)
+- Have a look at some of the projects on our [GitLab](https://gitlab.scicom.picr.man.ac.uk/explore) server
 
 ## Why should I avoid tracking binary files with version control?
 It is possible to add binary files to a Git repository, but this is usually
@@ -137,9 +137,9 @@ repository can quickly grow in size
 Strategies for dealing with large binary files are discussed
 [here](https://www.perforce.com/blog/storing-large-binary-files-in-git-repositories).
 
-## Git vs GitHub
+## Git vs GitLab
 For this session, we'll be using Git, a popular distributed version control system
-and [GitHub](http://github.com), a web-based service providing remote
+and [GitLab](https://gitlab.scicom.picr.man.ac.uk/), an open source web-based service providing remote
 repositories. *Distributed* means that each user has a complete copy of
 the repository on their computer and can commit changes offline. If you
 have used a centralized version control system before e.g. Subversion,

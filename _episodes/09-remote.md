@@ -4,13 +4,13 @@ teaching: 30
 exercises: 5
 questions:
 - "What is a remote repository"
-- "How can I use GitHub to work from multiple locations?"
+- "How can I use GitLab to work from multiple locations?"
 objectives:
 - "Understand how to set up remote repository"
 - "Understand how to push local changes to a remote repository"
 - "Understand how to clone a remote repository"
 keypoints:
-- "Git is the version control system: GitHub is a remote repositories provider."
+- "Git is the version control system: GitLab is our remote repository."
 - "`git clone` to make a local copy of a remote repository"
 - "`git push` to send local changes to remote repository"
 ---
@@ -19,9 +19,9 @@ We're going to set up a remote repository that we can use from multiple
 locations. The remote repository can also be shared with colleagues, if we want
 to.
 
-### GitHub
+### GitLab
 
-[GitHub](http://github.com) is a company which provides remote repositories for
+[GitLab](http://about.gitlab.com) is a company which provides remote repositories for
 Git and a range of functionalities supporting their use. GitHub allows users to
 set up  their private and public source code Git repositories. It provides
 tools for browsing, collaborating on and documenting code. GitHub, like other
@@ -85,7 +85,7 @@ so this is the option we will use:
 
 ```
 $ git remote add origin git@github.com:<USERNAME>/paper.git
-$ git push -u origin master
+$ git push -u origin main
 ```
 {: .language-bash}
 
@@ -110,7 +110,7 @@ new repository on GitHub.
 Now copy and paste the second line,
 
 ```
-$ git push -u origin master
+$ git push -u origin main
 ```
 {: .language-bash}
 
@@ -121,13 +121,13 @@ Compressing objects: 100% (28/28), done.
 Writing objects: 100% (32/32), 3.29 KiB | 0 bytes/s, done.
 Total 32 (delta 7), reused 0 (delta 0)
 To github.com:gcapes/paper
- * [new branch]      master -> master
-Branch master set up to track remote branch master from origin.
+ * [new branch]      main -> main
+Branch main set up to track remote branch main from origin.
 ```
 {: .output}
 
-This **pushes** our `master` branch to the remote repository, named via the alias
-`origin` and creates a new `master` branch in the remote repository.
+This **pushes** our `main` branch to the remote repository, named via the alias
+`origin` and creates a new `main` branch in the remote repository.
 
 Now, on GitHub, we should see our code and if we click the `Commits` tab we should see
 our complete history of commits.
@@ -239,7 +239,7 @@ We can use our cloned repository just as if it was a local repository so let's
 [add a results section][add-results] and commit the changes.
 
 ```
-$ git switch master			# We'll continue working on the master branch
+$ git switch main			# We'll continue working on the main branch
 $ nano paper.md				# Add results section
 $ git add paper.md			# Stage changes
 $ git commit
@@ -250,7 +250,7 @@ Having done that, how do we send our changes back to the remote repository? We
 can do this by *pushing* our changes,
 
 ```
-$ git push origin master
+$ git push origin main
 ```
 {: .language-bash}
 

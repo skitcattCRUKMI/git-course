@@ -13,7 +13,7 @@ keypoints:
 - "`git switch` switches to another branch"
 - "`git switch -c <branch_name>` creates a new branch and switches to it"
 - "`git merge <branch_name>` merges into current branch"
-- "Use feature branches for new ideas and fixes, before merging into `master`"
+- "Use feature branches for new ideas and fixes, before merging into `main`"
 - "Merging does not delete any branches"
 ---
 
@@ -26,18 +26,18 @@ $ git status
 ~~~
 {: .language-bash}
 ~~~
-On branch master
+On branch main
 nothing to commit (working directory clean)
 ~~~
 {: .output}
 
 and when we wanted to get back to our most recent version of the repository, we
-used `git switch master`.
+used `git switch main`.
 
 Not only can our repository store the changes made to files and directories, it
 can store multiple sets of these, which we can use and edit and update in
 parallel. Each of these sets, or parallel instances, is termed a **branch** and
-*master* is Git's default branch.
+*main* is Git's default branch.
 
 A new branch can be created from any commit. Branches can also be *merged*
 together.
@@ -45,14 +45,14 @@ together.
 ### Why are branches useful?
 Suppose we've developed some software and now we want to
 try out some new ideas but we're not sure yet whether we'll keep them. We
-can then create a branch *feature1* and keep our *master* branch clean. When
+can then create a branch *feature1* and keep our *main* branch clean. When
 we're done developing the feature and we are sure that we want to include it
-in our program, we can merge the feature branch with the *master* branch.
-This keeps all the work-in-progress separate from the *master* branch, which
+in our program, we can merge the feature branch with the *main* branch.
+This keeps all the work-in-progress separate from the *main* branch, which
 contains tested, working code.
 
-When we merge our feature branch with master git creates a new commit which
-contains merged files from master and feature1. After the merge we can continue
+When we merge our feature branch with main git creates a new commit which
+contains merged files from main and feature1. After the merge we can continue
 developing. **The merged branch is not deleted.** We can continue developing (and
 making commits) in feature1 as well.
 
@@ -61,12 +61,12 @@ making commits) in feature1 as well.
 A simple workflow I recommend using is the feature branch workflow.
 
 This consists of:
-- A *master* branch, representing a released version of the code
+- A *main* branch, representing a released version of the code
 - Various feature branches representing work-in-progress, new features, bug fixes etc
 
 The main idea is to start each piece of work in a new feature branch,
-and merge finished work into master.
-You shouldn't normally be committing directly to master.
+and merge finished work into main.
+You shouldn't normally be committing directly to main.
 
 For example:
 
@@ -83,7 +83,7 @@ on the Atlassian website.
 One of our colleagues wants to contribute to the paper but is not quite sure
 if it will actually make a publication. So it will be safer to create a branch
 and carry on working on this "experimental" version of the paper in a branch
-rather than in the master.
+rather than in main.
 
 So we create a new branch:
 
@@ -115,7 +115,7 @@ $ git branch			# Double check which branch we are working on
 ~~~
 {: .language-bash}
 ~~~
-  master
+  main
 * simulations
 ~~~
 {: .output}
@@ -130,19 +130,19 @@ $ git commit		# "Modify title and add John as co-author"
 ~~~
 {: .language-bash}
 
-If we now want to work in our `master` branch. We can switch back by using:
+If we now want to work in our `main` branch. We can switch back by using:
 
 ~~~
-$ git switch master
+$ git switch main
 ~~~
 {: .language-bash}
 ~~~
-Switched to branch 'master'
+Switched to branch 'main'
 ~~~
 {: .output}
 
 Having written some of the paper, we have thought of a [better title][aircraft-title] for
-the `master` version of the paper.
+the `main` version of the paper.
 
 ~~~
 $ nano paper.md		# Rewrite the title
@@ -153,7 +153,7 @@ $ git commit		# "Include aircraft in title"
 
 ### Merging and resolving conflicts
 
-We are now working on two papers: the main one in our `master` branch and the one
+We are now working on two papers: the main one in our `main` branch and the one
 which may possibly be collaborative work in our "simulations" branch.
 Let's [add another section][simulations-section] to the paper to write about John's simulations.
 
@@ -177,7 +177,7 @@ git log --graph --all --oneline --decorate
 ```
 * 89d5c6e (simulations) Add simulations
 * 05d393a Change title and add coauthor
-| * (HEAD, master) bdebbe0 Include aircraft in title
+| * (HEAD, main) bdebbe0 Include aircraft in title
 |/
 * 87a65e6 Explain motivation for research
 * 6a48241 Cite previous work in introduction
@@ -190,12 +190,12 @@ git log --graph --all --oneline --decorate
 After some discussions with John we decided that we will publish together,
 hence it makes sense to now merge all that was authored together with John
 in branch "simulations".
-We can do that by *merging* that branch with the `master` branch. Let's try
+We can do that by *merging* that branch with the `main` branch. Let's try
 doing that:
 
 ~~~
-$ git switch master		# Switch branch
-$ git merge simulations		# Merge simulations into master
+$ git switch main		# Switch branch
+$ git merge simulations		# Merge simulations into main
 ~~~
 {: .language-bash}
 ~~~
@@ -215,7 +215,7 @@ $ git status
 ~~~
 {: .language-bash}
 ~~~
-On branch master
+On branch main
 You have unmerged paths.
   (fix conflicts and run "git commit")
 
@@ -273,7 +273,7 @@ $ git log --graph --decorate --all --oneline
 {: .language-bash}
 
 ```
-*   39cc80d (HEAD, master) Merge branch 'simulations'
+*   39cc80d (HEAD, main) Merge branch 'simulations'
 |\
 | * 89d5c6e (simulations) Add simulations
 | * 05d393a Change title and add coauthor
@@ -313,7 +313,7 @@ But we were then in the "detached HEAD" state.
 > > {: .language-bash}
 > > ```
 > > * (detached from 57289fb)
-> >   master
+> >   main
 > > ```
 > > {: .output}
 > > You have just made a commit on a detached HEAD --
@@ -332,7 +332,7 @@ But we were then in the "detached HEAD" state.
 >
 > > ## Solution
 > > ```
-> > git switch master
+> > git switch main
 > > ```
 > > {: .language-bash}
 > > Git will warn you that you are leaving behind changes that would be lost:
@@ -351,8 +351,8 @@ But we were then in the "detached HEAD" state.
 > >
 > >  git branch new_branch_name eb7c650
 > >
-> >  Switched to branch 'master'
-> >  Your branch is up-to-date with 'master'.
+> >  Switched to branch 'main'
+> >  Your branch is up-to-date with 'main'.
 > > ```
 > > {: .output}
 > > See this [abandon detached HEAD] animation.
@@ -364,8 +364,8 @@ But we were then in the "detached HEAD" state.
 > ## Save your changes in a new branch
 > Preparation:
 >
-> - You should be on the `master` branch after that last exercise.
-> If not, switch to master again: `git switch master`
+> - You should be on the `main` branch after that last exercise.
+> If not, switch to main again: `git switch main`
 > - Switch (-d) to one of the previous commits from your repository.
 > - Make some changes, save the file(s), and make a commit on the detached HEAD as
 > you did in the first exercise.
@@ -375,7 +375,7 @@ But we were then in the "detached HEAD" state.
 > - Create a new branch and switch to it.
 > - Now run `git log` and see that your new commit belongs to this new branch.
 > - List your local branches again and see that the temporary branch has gone.
-> - Switch back to the `master` branch
+> - Switch back to the `main` branch
 >
 > > ## Solution
 > >
@@ -389,7 +389,7 @@ But we were then in the "detached HEAD" state.
 > >
 > > ```
 > > * (HEAD detached from f908519)
-> >  master
+> >  main
 > >  simulations
 > > ```
 > > {: .output}
@@ -408,14 +408,14 @@ But we were then in the "detached HEAD" state.
 > > {: .language-bash}
 > > ```
 > > * dh-exericise
-> >  master
+> >  main
 > >  simulations
 > > ```
 > > {: .output}
 > > The commit you made on the detached HEAD now belongs to a named branch
 > > (`dh-exercise` in the example above), rather than a temporary branch.
 > > ```
-> > git switch master		# Switch back to the 'master' branch
+> > git switch main		# Switch back to the 'main' branch
 > > ```
 > > {: .language-bash}
 > > See this [new branch animation] for the key points in this exercise.

@@ -15,7 +15,7 @@ keypoints:
 - "`git diff` displays differences between commits"
 - "`git switch -d` recovers previous states of the repo"
 - "`HEAD` points to the commit you have checked out"
-- "`master` points to the tip of the `master` branch"
+- "`main` points to the tip of the `main` branch"
 - "`git tag` allows commits to be given a descriptive label"
 - "`git difftool` shows changes using your configured diff GUI"
 ---
@@ -187,7 +187,7 @@ $ git diff OLDER_COMMITID NEWER_COMMITID
 > {: .solution}
 {: .challenge}
 
-### The `HEAD` and `master` pointers
+### The `HEAD` and `main` pointers
 
 Let's take a look again at the output from `git log`.
 This time we'll use the `--decorate` option to display the pointers
@@ -199,7 +199,7 @@ $ git log --decorate
 {: .language-bash}
 
 ~~~
-commit 8bf67f3862828ec51b3fdad00c5805de934563aa (HEAD -> master)
+commit 8bf67f3862828ec51b3fdad00c5805de934563aa (HEAD -> main)
 Author: Your Name <your.name@manchester.ac.uk>
 Date:	Mon Jun 26 10:22:39 2017 +0100
 
@@ -220,10 +220,10 @@ Date:	Mon Jun 26 10:14:30 2017 +0100
 ~~~
 {: .output}
 
-You'll see there are two pointers, `HEAD` and `master` which label the most recent commit.
+You'll see there are two pointers, `HEAD` and `main` which label the most recent commit.
 
 - `HEAD` points to the commit you're currently on in the repo
-- `master` points to the tip of the *master* branch, and moves forward as you make new commits
+- `main` points to the tip of the *main* branch, and moves forward as you make new commits
 - `HEAD` normally points to a branch pointer
 
 
@@ -246,14 +246,14 @@ $ git log --graph --decorate --oneline --all
 {: .language-bash}
 
 ```
-* 6a48241 (HEAD, master) Cite previous work in introduction
+* 6a48241 (HEAD, main) Cite previous work in introduction
 * ed26351 Cite PCASP paper
 * 7446b1d Write introduction
 * 4f572d5 Add title and author
 ```
 {: .output}
 
-Notice how `HEAD` and `master` point to the same commit.
+Notice how `HEAD` and `main` point to the same commit.
 
 As we'll find out in [episode 6]({{page.root}}/06-branching/#branching-in-practice),
 the **switch** command is used to switch between branches,
@@ -311,18 +311,18 @@ $ git log --graph --decorate --oneline --all
 {: .language-bash}
 
 ```
-* 6a48241 (master) Reference second paper in introduction
+* 6a48241 (main) Reference second paper in introduction
 * ed26351 (HEAD) Reference Allen et al in introduction
 * 7446b1d Write introduction
 * 4f572d5 Add title and authors
 ```
 {: .output}
 
-Notice how `HEAD` no longer points to the same commit as `master`.
-Let's return to the current version of the project by switching back to `master`.
+Notice how `HEAD` no longer points to the same commit as `main`.
+Let's return to the current version of the project by switching back to `main`.
 
 ```
-$ git switch master
+$ git switch main
 ```
 {: .language-bash}
 
@@ -388,7 +388,7 @@ $ nano paper.md
 And to return to the latest commit, we use
 
 ```
-$ git switch master
+$ git switch main
 ```
 {: .language-bash}
 

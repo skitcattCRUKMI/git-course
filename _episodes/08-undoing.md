@@ -74,7 +74,7 @@ $ git status		# Get a status update on file modifications
 {: .language-bash}
 
 ```
-$ On branch master
+$ On branch main
 Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
   (use "git restore <file>..." to discard changes in working directory)
@@ -101,7 +101,7 @@ $ git status
 ```
 {: .language-bash}
 ```
-$ On branch master
+$ On branch main
 Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
   (use "git restore <file>..." to discard changes in working directory)
@@ -179,7 +179,7 @@ Let's try it on our example.
 > > ```
 > > {: .language-bash}
 > >
-> > There will be one new commit on the master branch which undoes the changes.
+> > There will be one new commit on the main branch which undoes the changes.
 > {: .solution}
 {: .challenge}
 
@@ -240,7 +240,7 @@ HEAD is now at fbdc44b Add methodology section and update references file
 
 This moves the tip of the branch back to the specified commit. If we look in-depth,
 this command moves back two pointers: `HEAD` and the pointer to the tip of the
-branch we currently are working on (master). (`HEAD~` = the commit right before HEAD;
+branch we currently are working on (main). (`HEAD~` = the commit right before HEAD;
 `HEAD~2` = two commits before HEAD)
 
 The final effect is what we need: we abandoned the commits and we are now back

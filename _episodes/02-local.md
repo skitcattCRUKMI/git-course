@@ -45,18 +45,6 @@ For this we will use the command line interface.
 Instructions for setting up Git on your own machine are given under 
 [setup]({{ page.root }}{% link setup.md %}).
 
-You can verify you have everything set up correctly like this:
-
-```
-$ ssh -T git@github.com
-```
-{: .language-bash}
-
-```
-Hi <YOUR_GITHUB_USERNAME>! You've successfully authenticated, but GitHub does not provide shell access.
-```
-{: .output}
-
 ## Tell Git who we are
 
 As part of the information about changes made to files Git records who made
@@ -65,8 +53,8 @@ know who rewrote your 'Conclusions' section?). So, we need to tell Git about
 who we are (note that you need to enclose your name in quote marks):
 
 ~~~
-$ git config --global user.name "Your Name" 			# Put your quote marks around your name
-$ git config --global user.email yourname@yourplace.org
+$ git config --global user.name "Your Name" 			# Put quote marks around your name
+$ git config --global user.email yourname@cruk.manchester.ac.uk
 ~~~
 {: .language-bash}
 
@@ -190,7 +178,7 @@ $ nano paper.md
 > and by other programs.**
 >
 > Your typical workflow using version control might involve editing files using
-> e.g. MATLAB, PyCharm, Rstudio etc and committing from a command line interface.
+> e.g. Visual Studio Code, Rstudio, PyCharm etc and committing from a command line interface.
 {: .callout}
 
 `git status` allows us to find out about the current status
@@ -201,14 +189,13 @@ $ git status
 ~~~
 {: .language-bash}
 ~~~
-On branch master
+On branch main
 
-Initial commit
+No commits yet
 
 Untracked files:
-(use "git add <file>..." to include in what will be committed)
-
-paper.md
+  (use "git add <file>..." to include in what will be committed)
+	paper.md
 
 nothing added to commit but untracked files present (use "git add" to track)
 ~~~
@@ -225,18 +212,18 @@ tracking it - that is, any changes made to this file will not be recorded by
 Git.
 
 > ## Default branch name
-> Some implementations of git (e.g. on  newish Macs) have chosen to overwrite the default
-> branch name, and use `main` instead of `master`.
-> If this is the case, you can either mentally switch out `master` with `main` for the
-> rest of the course, or if you prefer you can change the branch name to `master` using
+> Some older implementations of git use the default
+> branch name `master` instead of `main`. The default branch name on GitLab and GitHub 
+> was changed in 2021 (read more [here](https://www.zdnet.com/article/github-to-replace-master-with-alternative-term-to-avoid-slavery-references/)).
+> If this is the case, you can change the branch name to `main` using
 > ```
-> git branch -m master
+> git branch -m main
 > ```
 > {: .language-bash}
 >
 > To make this a permanent change for new repos, you would need to run
 > ```
-> git config --global init.defaultBranch master
+> git config --global init.defaultBranch main
 > ```
 > {: .language-bash}
 {: .callout}
@@ -250,7 +237,7 @@ $ git status
 ~~~
 {: .language-bash}
 ~~~
-On branch master
+On branch main
 
 Initial commit
 
@@ -293,7 +280,7 @@ why. So we need to provide this in a commit message.
 If we save our commit message **and exit the editor**, Git will now commit our file.
 
 ~~~
-[master (root-commit) 21cfbde]
+[main (root-commit) 21cfbde]
 1 file changed, 2 insertions(+) Add title and authors
 create mode 100644 paper.md
 ~~~
@@ -310,7 +297,7 @@ $ git status
 ~~~
 {: .language-bash}
 ~~~
-On branch master
+On branch main
 nothing to commit, working directory clean
 ~~~
 {: .output}
@@ -338,7 +325,7 @@ we see changes not staged for commit section and our file is marked as
 modified:
 
 ~~~
-On branch master
+On branch main
 Changes not staged for commit:
 (use "git add <file>..." to update what will be committed)
 (use "git restore -- <file>..." to discard changes in working directory)
@@ -402,6 +389,8 @@ and Git will add, then commit, both the directory and the file.
 
 In order to add all tracked files to the staging area, use `git commit -a`
 (which may be very useful if you edit e.g. 10 files and now you want to commit all of them).
+
+TODO: Update these links to use our internal GitLab
 
 ![The Git commit workflow](../fig/git-committing.svg)
 
