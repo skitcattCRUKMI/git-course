@@ -17,7 +17,6 @@ keypoints:
 - "`HEAD` points to the commit you have checked out"
 - "`main` points to the tip of the `main` branch"
 - "`git tag` allows commits to be given a descriptive label"
-- "`git difftool` shows changes using your configured diff GUI"
 ---
 
 
@@ -46,37 +45,9 @@ Looking at differences between commits is one of the most common activities.
 The `git diff` command itself has a number of [useful
 options](http://git-scm.com/docs/git-diff.html).
 
-> ## Configure a visual diff tool
->
-> There are many GUI-based tools available for looking at differences and editing files,
-> which can be easier to work with.
->  For example:
-> * [Diffmerge](https://sourcegear.com/diffmerge/) (Free, cross-platform)
-> * [WinMerge](http://winmerge.org/) - open source tool available for Windows;
-> To view differences with a GUI instead of using the command-line diff tool, first configure
-> git to use your chosen diff tool:
->
-> ```
-> $ git config --global diff.tool diffmerge    # Set diffmerge as your visual diff tool
-> $ git config --global difftool.prompt false  # Suppress confirmation before launching GUI
-> ```
-> {: .language-bash}
-> Note that these config steps are [slightly different][diffmerge on windows] for Windows.
->
-> Then to use the GUI, use the following command instead of `git diff`:
->
-> ```
-> $ git difftool
-> ```
-> {: .language-bash}
->
-{: .callout}
-
-
 Now commit the change we made by adding the second reference:
 ```
-$ git add paper.md refs.txt
-$ git commit			# "Cite previous work in introduction"
+$ git commit -am "Cite previous work in introduction"
 ```
 {: .language-bash}
 
@@ -91,24 +62,29 @@ $ git log
 {: .language-bash}
 
 ```
-commit 8bf67f3862828ec51b3fdad00c5805de934563aa
-Author: Your Name <your.name@manchester.ac.uk>
-Date:	Mon Jun 26 10:22:39 2017 +0100
+commit 981f8db98d2835f6ef576fe5385b9d6340ceeb04 (HEAD -> main)
+Author: Stephen Kitcatt <stephen.kitcatt@cruk.manchester.ac.uk>
+Date:   Sat Mar 7 23:11:31 2026 +0000
 
-    Cite PCASP paper
+    Cite previous work in introduction
 
+commit d01b9d354355b3d560cec4e4fa5bc047a8a93808
+Author: Stephen Kitcatt <stephen.kitcatt@cruk.manchester.ac.uk>
+Date:   Sat Mar 7 23:08:10 2026 +0000
 
-commit 4dd7f5c948fdc11814041927e2c419283f5fe84c
-Author: Your Name <your.name@manchester.ac.uk>
-Date:	Mon Jun 26 10:21:48 2017 +0100
+    Reference J Bloggs and add references file
+
+commit dd00899d0af5205e3875dca02794187cbd259f56
+Author: Stephen Kitcatt <stephen.kitcatt@cruk.manchester.ac.uk>
+Date:   Sat Mar 7 23:04:38 2026 +0000
 
     Write introduction
 
-commit c38d2243df9ad41eec57678841d462af93a2d4a5
-Author: Your Name <your.name@manchester.ac.uk>
-Date:	Mon Jun 26 10:14:30 2017 +0100
+commit df0d4973cd2e16f39b8b60949fe5a07dc643b338
+Author: Stephen Kitcatt <stephen.kitcatt@cruk.manchester.ac.uk>
+Date:   Sat Mar 7 23:01:01 2026 +0000
 
-    Add author and title
+    Add title and authors
 ```
 {: .output}
 
@@ -199,24 +175,29 @@ $ git log --decorate
 {: .language-bash}
 
 ~~~
-commit 8bf67f3862828ec51b3fdad00c5805de934563aa (HEAD -> main)
-Author: Your Name <your.name@manchester.ac.uk>
-Date:	Mon Jun 26 10:22:39 2017 +0100
+commit 981f8db98d2835f6ef576fe5385b9d6340ceeb04 (HEAD -> main)
+Author: Stephen Kitcatt <stephen.kitcatt@cruk.manchester.ac.uk>
+Date:   Sat Mar 7 23:11:31 2026 +0000
 
-    Cite PCASP paper
+    Cite previous work in introduction
 
+commit d01b9d354355b3d560cec4e4fa5bc047a8a93808
+Author: Stephen Kitcatt <stephen.kitcatt@cruk.manchester.ac.uk>
+Date:   Sat Mar 7 23:08:10 2026 +0000
 
-commit 4dd7f5c948fdc11814041927e2c419283f5fe84c
-Author: Your Name <your.name@manchester.ac.uk>
-Date:	Mon Jun 26 10:21:48 2017 +0100
+    Reference J Bloggs and add references file
+
+commit dd00899d0af5205e3875dca02794187cbd259f56
+Author: Stephen Kitcatt <stephen.kitcatt@cruk.manchester.ac.uk>
+Date:   Sat Mar 7 23:04:38 2026 +0000
 
     Write introduction
 
-commit c38d2243df9ad41eec57678841d462af93a2d4a5
-Author: Your Name <your.name@manchester.ac.uk>
-Date:	Mon Jun 26 10:14:30 2017 +0100
+commit df0d4973cd2e16f39b8b60949fe5a07dc643b338
+Author: Stephen Kitcatt <stephen.kitcatt@cruk.manchester.ac.uk>
+Date:   Sat Mar 7 23:01:01 2026 +0000
 
-    Add author and title
+    Add title and authors
 ~~~
 {: .output}
 
@@ -246,10 +227,10 @@ $ git log --graph --decorate --oneline --all
 {: .language-bash}
 
 ```
-* 6a48241 (HEAD, main) Cite previous work in introduction
-* ed26351 Cite PCASP paper
-* 7446b1d Write introduction
-* 4f572d5 Add title and author
+* 981f8db (HEAD -> main) Cite previous work in introduction
+* d01b9d3 Reference J Bloggs and add references file
+* dd00899 Write introduction
+* df0d497 Add title and authors
 ```
 {: .output}
 
@@ -269,7 +250,7 @@ $ git switch -d INITIAL_COMMITID
 We will get something like this:
 
 ~~~
-HEAD is now at 8bd9133 Add title and author
+HEAD is now at df0d497 Add title and authors
 ~~~
 {: .output}
 
@@ -282,7 +263,7 @@ $ git status
 we get a confirmation that we have a *detached HEAD*:
 
 ~~~
-HEAD detached at 8bd9133
+HEAD detached at df0d497
 nothing to commit, working tree clean
 ~~~
 {: .output}
@@ -311,10 +292,10 @@ $ git log --graph --decorate --oneline --all
 {: .language-bash}
 
 ```
-* 6a48241 (main) Reference second paper in introduction
-* ed26351 (HEAD) Reference Allen et al in introduction
-* 7446b1d Write introduction
-* 4f572d5 Add title and authors
+* 981f8db (main) Cite previous work in introduction
+* d01b9d3 Reference J Bloggs and add references file
+* dd00899 Write introduction
+* df0d497 (HEAD) Add title and authors
 ```
 {: .output}
 
@@ -365,8 +346,7 @@ Let's explain to the reader [why this research is important][give-context]:
 
 ```
 $ nano paper.md	# Give context for research
-$ git add paper.md
-$ git commit -m "Explain motivation for research" paper.md
+$ git commit -am "Explain motivation for research"
 ```
 {: .language-bash}
 

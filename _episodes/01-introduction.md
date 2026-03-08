@@ -25,7 +25,7 @@ mess things up, you can retrieve an earlier version of your project.
 ![[Piled Higher and Deeper by Jorge Cham,
 http://www.phdcomics.com](http://www.phdcomics.com)](../fig/phd101212s.png)
 
-The comic above illustrates some of pitfalls of working without version
+The comic above illustrates some pitfalls of working without version
 control. Some of the benefits are given below:
 
 ## Storing versions (properly)
@@ -95,7 +95,7 @@ version is kept (in the repository).
 ## Example scenario
 Think about the following situation:
 
-You are working on a handful of MATLAB files. You make a few changes,
+You are working on a handful of R scripts. You make a few changes,
 and then you want to try something you're not quite confident about
 yet, so you save a copy in another folder just in case.
 
@@ -117,18 +117,17 @@ You should easily be able to see the benefits of VCS in the situation above.
 
 ## What files can I track using version control?
 VCS is typically used for software source code, but it can be used for
-any kind of **text** file:
+(small) **text** files:
 
 - Configuration files
 - Parameter sets
-- Data files
+- Data files (small)
 - User documentation, manuals, and journal papers,  whether they be plain-text,
 LaTeX, XML, md etc
 - Have a look at some of the projects on our [GitLab](https://gitlab.scicom.picr.man.ac.uk/explore) server
 
 ## Why should I avoid tracking binary files with version control?
-It is possible to add binary files to a Git repository, but this is usually
-a bad idea:
+It is possible to add binary files to a Git repository, such as images, executables or Excel spreadsheets. This is usually a bad idea:
 - diffs between versions become meaningless
 - binary files are often large, and thus slow down your repository
 - changes to binary files often required a whole new copy to be saved, so your

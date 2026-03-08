@@ -66,7 +66,7 @@ tell Git which editor we want to be the default one (i.e. Git will always bring
 it up whenever it wants us to provide some information).
 
 You can choose any editor available on your system,
-but for this course we will use `nano`.
+but for this course we will use `nano` but you can use `vim` if you prefer.
 
 ~~~
 $ git config --global core.editor nano
@@ -97,7 +97,7 @@ $ cat ~/.gitconfig
 ~~~
 [user]
 	name = Your Name
-	email = yourname@yourplace.org
+	email = yourname@cruk.manchester.ac.uk
 [core]
 	editor = nano
 ~~~
@@ -202,7 +202,7 @@ nothing added to commit but untracked files present (use "git add" to track)
 {: .output}
 
 Information about what Git knows about the directory is displayed. We are on
-the `master` branch, which is the default branch in a Git respository
+the `main` branch, which is the default branch in a Git respository
 (one way to think of branches is like parallel versions of the project - more
 on branches later).
 
@@ -280,9 +280,9 @@ why. So we need to provide this in a commit message.
 If we save our commit message **and exit the editor**, Git will now commit our file.
 
 ~~~
-[main (root-commit) 21cfbde]
-1 file changed, 2 insertions(+) Add title and authors
-create mode 100644 paper.md
+[main (root-commit) df0d497] Add title and authors
+ 1 file changed, 5 insertions(+)
+ create mode 100644 paper.md
 ~~~
 {: .output}
 
@@ -304,7 +304,7 @@ nothing to commit, working directory clean
 
 our file is now in the repository.
 The output from the `git status` command means that we have a clean directory
-i.e. no tracked but modified files.
+i.e. no tracked files have been modified.
 
 Now we will work a bit further on our *paper.md* file by [starting the introduction][start-intro]
 section.

@@ -27,7 +27,7 @@ and `git pull` the commit from the remote.
 
 ```
 $ cd ../paper
-$ git pull origin master
+$ git pull origin main
 ```
 {: .language-bash}
 
@@ -39,7 +39,7 @@ $ git log -2
 {: .language-bash}
 
 Still in the `paper` directory, let's [add a figures section][add-figures] to `paper.md`,
-commit the file and push these changes to GitHub:
+commit the file and push these changes to GitLab:
 
 ```
 $ nano paper.md		# Add figures section
@@ -70,8 +70,8 @@ git log --graph --all --decorate --oneline
 {: .language-bash}
 
 ```
-* 7c239c3 (origin/master, origin/HEAD) Add figures
-* 0cc2a2d (HEAD -> master) Discuss results
+* 7c239c3 (origin/main, origin/HEAD) Add figures
+* 0cc2a2d (HEAD -> main) Discuss results
 * 3011ee0 Describe methodology
 *   6420699 Merge branch 'simulations'
 |\
@@ -87,27 +87,27 @@ git log --graph --all --decorate --oneline
 ```
 {: .output}
 
-As expected, we see that the `origin/master` branch is ahead of our local `master` branch
+As expected, we see that the `origin/main` branch is ahead of our local `main` branch
 by one commit  --- note that the history hasn't diverged,
-rather our local branch is missing the most recent commit on `origin/master`.
+rather our local branch is missing the most recent commit on `origin/main`.
 
 We can now see what the differences are by doing,
 
 ```
-$ git diff origin/master
+$ git diff origin/main
 ```
 {: .language-bash}
 
-which compares our `master` branch with the `origin/master` branch
-which is the name of the `master` branch in `origin` which is the alias for our
-cloned repository, the one on GitHub.
+which compares our `main` branch with the `origin/main` branch
+which is the name of the `main` branch in `origin` which is the alias for our
+cloned repository, the one on GitLab.
 
 We can then `merge` these changes into our current repository,
 but given the history hasn't diverged, we don't get a merge commit ---
 instead we get a *fast-forward* merge.
 
 ```
-$ git merge origin/master
+$ git merge origin/main
 ```
 {: .language-bash}
 
@@ -120,7 +120,7 @@ Fast-forward
 {: .output}
 
 If we look at the network graph again, all that has changed
-is that `master` now points to the same commit as `origin/master`.
+is that `main` now points to the same commit as `origin/main`.
 
 ```
 git log --graph --all --decorate --oneline -4
@@ -128,7 +128,7 @@ git log --graph --all --decorate --oneline -4
 {: .language-bash}
 
 ```
-* 7c239c3 (HEAD -> master, origin/master, origin/HEAD) Add figures
+* 7c239c3 (HEAD -> main, origin/main, origin/HEAD) Add figures
 * 0cc2a2d Discuss results
 * 3011ee0 Describe methodology
 *   6420699 Merge branch 'simulations'
@@ -166,9 +166,9 @@ Let's [write the conclusions][write-conclusions]:
 $ nano paper.md		# Write Conclusions
 $ git add paper.md
 $ git commit -m "Write Conclusions" paper.md
-$ git push origin master
+$ git push origin main
 $ cd ../paper			# Switch back to the paper directory
-$ git pull origin master	# Get changes from remote repository
+$ git pull origin main	# Get changes from remote repository
 ```
 {: .language-bash}
 
@@ -193,14 +193,14 @@ Then push these changes to our remote repository:
 $ nano paper.md		# Add author affiliations
 $ git add paper.md
 $ git commit -m "Add author affiliations"
-$ git push origin master
+$ git push origin main
 ```
 {: .language-bash}
 
 Now let us suppose, at a later date, we use our other repository (on the laptop)
 and we want to [change the order of the authors][change-first-author].
 
-The remote branch `origin/master` is now ahead of our local `master` branch on the laptop,
+The remote branch `origin/main` is now ahead of our local `main` branch on the laptop,
 because we haven't yet updated our local branch using `git pull`.
 
 ```
@@ -208,13 +208,13 @@ $ cd ../laptop_paper		# Switch directory to other copy of our repository
 $ nano paper.md		# Change order of the authors
 $ git add paper.md
 $ git commit -m "Change the first author" paper.md
-$ git push origin master
+$ git push origin main
 ```
 {: .language-bash}
 ```
-To https://github.com/<USERNAME>/paper.git
- ! [rejected]	     master -> master (fetch first)
-error: failed to push some refs to 'https://github.com/<USERNAME>/paper.git'
+To https://gitlab.scicom.picr.man.ac.uk/<USERNAME>/paper.git
+ ! [rejected]	     main -> main (fetch first)
+error: failed to push some refs to 'https://gitlab.scicom.picr.man.ac.uk/<USERNAME>/paper.git'
 hint: Updates were rejected because the remote contains work that you do
 hint: not have locally. This is usually caused by another repository pushing
 hint: to the same ref. You may want to first integrate the remote changes
@@ -227,7 +227,7 @@ Our push fails, as we've not yet pulled down our changes from our remote
 repository. Before pushing we should always pull, so let's do that...
 
 ```
-$ git pull origin master
+$ git pull origin main
 ```
 {: .language-bash}
 
@@ -244,7 +244,7 @@ As we saw earlier, with the fetch and merge, `git pull` pulls down changes from 
 repository and tries to merge them. It does this on a file-by-file basis,
 merging files line by line. We get a **conflict** if a file has changes that
 affect the same lines and those changes can't be seamlessly merged. We had this
-situation before in the *branching* episode when we merged a *feature* branch into *master*.
+situation before in the *branching* episode when we merged a *feature* branch into *main*.
 If we look at the status,
 
 ```
@@ -258,10 +258,10 @@ we can see that our file is listed as *Unmerged* and if we look at
 ```
 <<<<<<< HEAD
 Author
-G Capes, J Smith
+S Kitcatt, J Smith
 =======
 author
-J Smith, G Capes
+J Smith, S Kitcatt
 >>>>>>> 1b55fe7f23a6411f99bf573bfb287937ecb647fc
 ```
 {: .output}
@@ -277,7 +277,7 @@ merging the branches.
 $ nano paper.md		# Edit file to resolve merge conflict
 $ git add paper.md		# Stage the file
 $ git commit			# Commit to mark the conflict as resolved
-$ git push origin master
+$ git push origin main
 ```
 {: .language-bash}
 
@@ -293,7 +293,7 @@ so both copies are up to date:
 
 ```
 $ cd ../paper			# Switch to 'paper' directory
-$ git pull origin master	# Merge remote branch into local
+$ git pull origin main	# Merge remote branch into local
 ```
 {: .language-bash}
 
@@ -353,8 +353,8 @@ $ git pull origin master	# Merge remote branch into local
 > Counting objects: 3, done.  remote:
 > Compressing objects: 100% (3/3), done.
 > remote: Total 3 (delta 0), reused 2 (delta 0) Unpacking objects: 100% (3/3), done.
-> From	https://github.com/gcapes/paper
-> 9e1705a..640210a master -> origin/master
+> From	https://gitlab.scicom.picr.man.ac.uk/<USERNAME>/paper.git
+> 9e1705a..640210a main -> origin/main
 > * [new branch] their_branch -> origin/their_branch
 > ```
 > {: .output}

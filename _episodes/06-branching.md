@@ -175,15 +175,15 @@ git log --graph --all --oneline --decorate
 {: .language-bash}
 
 ```
-* 89d5c6e (simulations) Add simulations
-* 05d393a Change title and add coauthor
-| * (HEAD, main) bdebbe0 Include aircraft in title
-|/
-* 87a65e6 Explain motivation for research
-* 6a48241 Cite previous work in introduction
-* ed26351 Cite PCASP paper
-* 7446b1d Start the introduction
-* 4f572d5 Add title and author
+* 48bfa85 (HEAD -> simulations) Add simulations
+* 3175fa6 Modify title and add John as co-author
+| * afeac88 (main) Include aircraft in title
+|/  
+* eede930 Explain motivation for research
+* 981f8db (tag: PAPER_STUB) Cite previous work in introduction
+* d01b9d3 Reference J Bloggs and add references file
+* dd00899 Write introduction
+* df0d497 Add title and authors
 ```
 {: .output}
 
@@ -273,17 +273,17 @@ $ git log --graph --decorate --all --oneline
 {: .language-bash}
 
 ```
-*   39cc80d (HEAD, main) Merge branch 'simulations'
-|\
-| * 89d5c6e (simulations) Add simulations
-| * 05d393a Change title and add coauthor
-* | bdebbe0 Include aircraft in title
-|/
-* 87a65e6 Explain motivation for research
-* 6a48241 Cite previous work in introduction
-* ed26351 Cite PCASP paper
-* 7446b1d Start the introduction
-* 4f572d5 Add title and author
+*   26bdb18 (HEAD -> main) Merge branch 'simulations'
+|\  
+| * 48bfa85 (simulations) Add simulations
+| * 3175fa6 Modify title and add John as co-author
+* | afeac88 Include aircraft in title
+|/  
+* eede930 Explain motivation for research
+* 981f8db (tag: PAPER_STUB) Cite previous work in introduction
+* d01b9d3 Reference J Bloggs and add references file
+* dd00899 Write introduction
+* df0d497 Add title and authors
 ```
 {: .output}
 

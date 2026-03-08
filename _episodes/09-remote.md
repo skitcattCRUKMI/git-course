@@ -21,48 +21,27 @@ to.
 
 ### GitLab
 
-[GitLab](http://about.gitlab.com) is a company which provides remote repositories for
-Git and a range of functionalities supporting their use. GitHub allows users to
-set up  their private and public source code Git repositories. It provides
-tools for browsing, collaborating on and documenting code. GitHub, like other
-services such as [Bitbucket](https://bitbucket.org) and [GitLab](https://about.gitlab.com/)
-supports a wealth of resources to support projects including:
+Our internal [GitLab](https://gitlab.scicom.picr.man.ac.uk) provides hosted remote repositories for Git and a range of
+features to support their use. If you’re more familiar with **GitHub**, think of this
+as the same kind of platform (Git hosting, reviews, issues), but **hosted internally** on our system
+and only accessible on our network/VPN.
 
-* Code download
+**Access requirements:** This site is only reachable from the internal network.
+To access it, you must be either:
+* Connected via **ethernet** on-site, or
+* Connected to the **CRUK staff Wi‑Fi**, or
+* Connected via the **Global Connect VPN**
+
+GitLab supports a wealth of resources to support projects including:
+
+* Code download / clone access
 * History of changes to repositories
 * Browsing code from within a web browser, with syntax highlighting
-* E-mail notifications
+* Notifications (e.g., e-mail and in-app)
 * Software release management
 * Issue tracking (great for planning and discussing work)
+* Continuous Integration and Continuous Deployment pipelines (CI/CD)
 
-**Note**  GitHub's free repositories have public licences **by default**. If
-you don't want to share (in the most liberal sense) your stuff with the world
-and you want to use GitHub, you can create a private repository, which is limited
-to 3 collaborators for a free GitHub account.
-
-> ## Are you already using GitHub?
-> - If you're not already using GitHub (or similar) for your research code
->   what is holding you back? What concerns do you have?
-> - If you've already taken the plunge, how did you overcome any concerns?
->
-> > ## Some thoughts
-> > - Your code isn't 'good enough' yet
-> >   - Getting your code shared online is one of the best ways to improve it.
-> >   - GitHub has some great tools for collaboration which will make it easier
-> >     to get help from others (e.g. code review from a colleague) and
-> >   - Having the history of changes and discussions all in one place makes it easier
-> >     for someone else to build on your code (or vice versa)
-> >   - The reality is code is nearly always a work-in-progress,
-> >     so it's best to just get started wherever you're currently up to
-> > - Who owns code in a public repo?
-> >   - Keeping your code in a private repo will ensure that no-one can view it or use it
-> >   - Even a public repo without a licence is covered by default copyright laws
-> >   - However, adding a licence e.g. [MIT][MIT-licence] and [making a release][github-release]
-> >     means others can use it but you would retain copyright for your work
-> >   - <https://choosealicense.com/> is a good tool for deciding which licence is appropriate for you
-> >   - You can also [release code with a DOI][citable-code] so that people can cite it in papers.
-> {: .solution}
-{: .discussion}
 
 ---
 
@@ -70,44 +49,32 @@ to 3 collaborators for a free GitHub account.
 
 Now, we can create a repository on GitHub,
 
-* Log in to [GitHub]
-* Click on the **Create** icon on the top right
+* Log in to [GitLab] with your CRUKMI username and password
+* Click on the **+** icon on the top left
+* Select **New project/repository**
 * Enter Repository name: "paper"
 * For the purpose of this exercise we'll create a public repository
 * Make sure that *Initialize this repository with a README* is **unselected**
 * Click **Create Repository**
 
 You'll get a page with new information about your repository. We already have
-our local repository and we will be *pushing* it to GitHub **using SSH**,
+our local repository and we will be *pushing* it to GitLab **using HTML**,
 so this is the option we will use:
 
 ![ssh-address](../fig/github-ssh-address.png)
 
 ```
-$ git remote add origin git@github.com:<USERNAME>/paper.git
+$ git remote add origin https://gitlab.scicom.picr.man.ac.uk/<USERNAME>/paper.git
 $ git push -u origin main
 ```
 {: .language-bash}
 
-> ## Authentication Errors
->
-> If you get a warning that HTTPS access is deprecated, or a token is required,
-> then you accidentally cloned the repository using HTTPS and not SSH.
-> You can fix this from the command line by
-> resetting the remote repository URL setting on your local repo:
->
-> ~~~
-> $ git remote set-url origin git@github.com:<YOUR_GITHUB_USERNAME>/paper.git
-> ~~~
-> {: .language-bash}
-{: .caution}
-
 The first line sets up an alias `origin`, to correspond to the URL of our
-new repository on GitHub.
+new repository on GitLab.
 
 ### Push locally tracked files to a remote repository
 
-Now copy and paste the second line,
+Now copy and paste the second line, using your CRUKMI username and password when prompted:
 
 ```
 $ git push -u origin main
@@ -120,7 +87,7 @@ Delta compression using up to 8 threads.
 Compressing objects: 100% (28/28), done.
 Writing objects: 100% (32/32), 3.29 KiB | 0 bytes/s, done.
 Total 32 (delta 7), reused 0 (delta 0)
-To github.com:gcapes/paper
+To gitlab.scicom.picr.man.ac.uk:skitcatt/paper
  * [new branch]      main -> main
 Branch main set up to track remote branch main from origin.
 ```
@@ -129,11 +96,11 @@ Branch main set up to track remote branch main from origin.
 This **pushes** our `main` branch to the remote repository, named via the alias
 `origin` and creates a new `main` branch in the remote repository.
 
-Now, on GitHub, we should see our code and if we click the `Commits` tab we should see
+Now, on GitLab, we should see our code and if we click the `History` button we should see
 our complete history of commits.
 
-Our local repository is now available on GitHub. So, anywhere we can access
-GitHub, we can access our repository.
+Our local repository is now available on the internal GitLab. So, anywhere we can access
+GitLab, we can access our repository.
 
 ### Push other local branches to a remote repository
 
@@ -153,14 +120,6 @@ $ git branch -a
 ```
 {: .language-bash}
 
-> ## Automatically enter your ssh passphrase with the ssh agent
-> If your ssh key has a passphrase and you don't want to enter it every time,
-> you can [add your key to the ssh agent][ssh-agent] which manages your keys and remembers
-> your passphrase.
->
-> **Be sure to follow the correct instructions for your operating system at the link above!**
-{: .callout}
-
 > ## Deleting branches (for information only)
 >
 > **Don't do this now.** This is just for information.
@@ -175,7 +134,7 @@ $ git branch -a
 
 ### Cloning a remote repository
 
-Now that we have a copy of the repo on GitHub,
+Now that we have a copy of the repo on GitLab,
 we can download or `git clone` a fresh copy to work on from another computer.
 
 So let's pretend that the repo we've been working on so far is on a PC in the office,
@@ -191,7 +150,7 @@ cd ..
 Then to clone the repo into a new directory called `laptop_paper`
 
 ```
-$ git clone git@github.com:<USERNAME>/paper.git laptop_paper
+$ git clone https://gitlab.scicom.picr.man.ac.uk/<USERNAME>/paper.git laptop_paper
 ```
 {: .language-bash}
 
@@ -254,7 +213,7 @@ $ git push origin main
 ```
 {: .language-bash}
 
-If we now check our GitHub page we should be able to see our new changes under
+If we now check our GitLab page we should be able to see our new changes under
 the *Commit* tab.
 
 To see all remote repositories (we can have multiple!) type:

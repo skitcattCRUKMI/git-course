@@ -234,7 +234,7 @@ $ git reset --hard HEAD~2	# Move tip of branch to two commits before HEAD
 ```
 {: .language-bash}
 ```
-HEAD is now at fbdc44b Add methodology section and update references file
+HEAD is now at d0647f1 Add methodology section and update references file
 ```
 {: .output}
 
