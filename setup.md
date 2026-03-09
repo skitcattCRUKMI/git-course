@@ -17,18 +17,14 @@ You'll need to [sign in][GitLab] at least once before you can set up any reposit
 
 Git is free and open-source software, available for all operating systems.
 
-#### Installation on a managed desktop PC
+#### Terminal
 
-TODO: Update this for installation on CRUKMI computers (Windows/Mac)
+You will need access to a terminal with Git installed to follow along with the exercises. You can use any you like (eg. Rstudio server, Griffin).
+If you don't have a terminal set up then we have provided a virtual terminal which can be accessed [here](https://shell.scicom.picr.man.ac.uk/) 
 
-[Git for Windows](https://git-for-windows.github.io/) is available for self-installation from the
-[Software Centre](https://manchester.saasiteu.com/Modules/SelfService/#knowledgeBase/view/19D08D7414AE4D85998B2F79EC4C4B99)
-(search for 'git').
+You can log into the terminal with your CRUKMI credentials:
 
-#### Installation on personal and unmanaged machines
-
-[See here](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) 
-for installation instructions for the major operating systems.
+`su - <username>`
 
 **Please get in touch before the course starts if you run into any problems with set up!**
 

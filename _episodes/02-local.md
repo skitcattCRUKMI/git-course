@@ -390,7 +390,6 @@ and Git will add, then commit, both the directory and the file.
 In order to add all tracked files to the staging area, use `git commit -a`
 (which may be very useful if you edit e.g. 10 files and now you want to commit all of them).
 
-TODO: Update these links to use our internal GitLab
 
 ![The Git commit workflow](../fig/git-committing.svg)
 
