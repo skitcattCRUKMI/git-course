@@ -17,8 +17,8 @@ We were in the *paper* directory at the end of the last episode,
 which is where this episode continues.
 
 Let's review the recent history of our project,
-noting particularly the commit message which results when `origin/master` and `master` diverge,
-and `origin/master` is merged back into `master`.
+noting particularly the commit message which results when `origin/main` and `main` diverge,
+and `origin/main` is merged back into `main`.
 
 ```
 $ git log --graph --all --oneline --decorate -6
@@ -26,7 +26,7 @@ $ git log --graph --all --oneline --decorate -6
 {: .language-bash}
 
 ```
-*   365748e (HEAD -> master, origin/master, origin/HEAD) Merge branch 'master' of github.com:gcapes/paper
+*   365748e (HEAD -> main, origin/main, origin/HEAD) Merge branch 'main' of gitlab.com:skitcattCRUKMI/paper
 |\
 | * ff18da4 Add author affiliations
 * | 8f44540 Change first author
@@ -64,12 +64,12 @@ It's like saying "add my changes to what has already been done".
 
 ### How's that different to merging?
 Imagine you create a new feature branch to work in, and meanwhile there have been
-commits added to the `master` branch, as shown below.
+commits added to the `main` branch, as shown below.
 
 ![](../fig/forked-history.svg)
 
 You've finished working on the feature, and
-you want to incorporate your changes from the `feature` branch into the `master` branch.
+you want to incorporate your changes from the `feature` branch into the `main` branch.
 You could merge directly or rebase then merge. We have already encountered merging, and it
 looks like this:
 
@@ -77,17 +77,17 @@ looks like this:
 
 The main reason you might want to rebase is to maintain a linear project history.
 In the example above, if you merge directly (recall that there are new commits on
-both the `master` branch and `feature` branch), you have a 3-way merge
+both the `main` branch and `feature` branch), you have a 3-way merge
 (common ancestor, HEAD and MERGE_HEAD) and a merge commit results.
 Note that you get a merge commit whether or not there are any merge conflicts.
 
-If you rebase, your commits from the `feature` branch are replayed onto `master`,
+If you rebase, your commits from the `feature` branch are replayed onto `main`,
 creating brand new commits in the process.
 If there are any merge conflicts, you are prompted to resolve these.
 
 ![](../fig/rebase-master.svg)
 
-After rebasing, you can then perform a fast-forward merge into `master` i.e. without
+After rebasing, you can then perform a fast-forward merge into `main` i.e. without
 an extra merge commit at the end, so you have a nice clean linear history.
 
 ![](../fig/rebase-then-merge.svg)
@@ -100,11 +100,11 @@ Some reasons to consider rebasing:
 - To give a linear project history, which is easier to follow
 	- This makes using `git log`, and `git bisect` easier
 - To integrate upstream changes into your local repository, without creating any merge commits
-- To keep a feature branch up to date with master, without polluting your feature branch with
+- To keep a feature branch up to date with main, without polluting your feature branch with
 extraneous merge commits
 - Makes pull requests easier to manage (because you've already resolved any merge conflicts
 while rebasing)
-- To tidy up a feature branch before merging into master (requires interactive rebase)
+- To tidy up a feature branch before merging into main (requires interactive rebase)
 
 
 > ## Interactive rebasing
@@ -116,8 +116,8 @@ while rebasing)
 ### A worked example using `git rebase <base>`
 
 We'll repeat the scenario from the last episode where the local and remote branches diverge,
-but instead of merging the remote branch `origin/master` into `master`,
-we'll rebase `master` onto `origin/master`.
+but instead of merging the remote branch `origin/main` into `main`,
+we'll rebase `main` onto `origin/main`.
 
 We'll [write some acknowledgements][acknowledgements], then commit and push.
 
@@ -125,7 +125,7 @@ We'll [write some acknowledgements][acknowledgements], then commit and push.
 $ nano paper.md				# Write acknowledgements
 $ git add paper.md
 $ git commit -m "Write acknowledgements section"
-$ git push origin master			# Push master branch to remote
+$ git push origin main			# Push main branch to remote
 ```
 {: .language-bash}
 
@@ -141,7 +141,7 @@ $ git commit					# "Write abstract"
 {: .language-bash}
 
 At this point we can view a graph of project history,
-and see where the `master` branch diverges from `origin/master`:
+and see where the `main` branch diverges from `origin/main`:
 
 ```
 $ git fetch					# Retrieve information about remote branches
@@ -150,10 +150,10 @@ $ git log --graph --all --oneline --decorate	# View project history before rebas
 {: .language-bash}
 
 ```
-* 21cfe5f (HEAD -> master) Write abstract
-| * 13aa7e3 (origin/master, origin/HEAD) Add acknowledgements
+* 21cfe5f (HEAD -> main) Write abstract
+| * 13aa7e3 (origin/main, origin/HEAD) Add acknowledgements
 |/
-*   365748e Merge branch 'master' of github.com:gcapes/paper
+*   365748e Merge branch 'main' of gitlab.com:skitcattCRUKMI/paper
 |\
 | * ff18da4 Add author affiliations
 * | 8f44540 Change first author
@@ -170,7 +170,7 @@ We did that in the last episode, which resulted in a 'forgot-to-pull' merge comm
 This time we will replay our local branch onto to the remote branch.
 
 ```
-$ git rebase origin/master			# Rebase current branch onto origin/master
+$ git rebase origin/main			# Rebase current branch onto origin/main
 ```
 {: .language-bash}
 
@@ -190,10 +190,10 @@ Typically, you would use `git pull --rebase` instead, which combines the fetch a
 > {: .language-bash}
 {: .callout}
 
-Let's now visualise our project history again, having rebased `master` onto `origin/master`,
+Let's now visualise our project history again, having rebased `main` onto `origin/main`,
 and observe that we now have a linear project history.
 Rebasing has created a new commit (with a new commit ID) and put it on top of
-the commit pointed at by `origin/master` --- thus avoiding that forgot-to-pull merge commit!
+the commit pointed at by `origin/main` --- thus avoiding that forgot-to-pull merge commit!
 
 ```
 $ git log --graph --all --oneline --decorate	# View project history after rebasing
@@ -201,9 +201,9 @@ $ git log --graph --all --oneline --decorate	# View project history after rebasi
 {: .language-bash}
 
 ```
-* 6105e61 (HEAD -> master) Write abstract
-* 13aa7e3 (origin/master, origin/HEAD) Add acknowledgements
-*   365748e Merge branch 'master' of github.com:gcapes/paper
+* 6105e61 (HEAD -> main) Write abstract
+* 13aa7e3 (origin/main, origin/HEAD) Add acknowledgements
+*   365748e Merge branch 'main' of gitlab.com:skitcattCRUKMI/paper
 |\
 | * ff18da4 Add author affiliations
 * | 8f44540 Change first author
@@ -216,7 +216,7 @@ Having integrated the remote changes into our local branch, we can now push our 
 back to 'origin'.
 
 ```
-$ git push origin master
+$ git push origin main
 ```
 {: .language-bash}
 
