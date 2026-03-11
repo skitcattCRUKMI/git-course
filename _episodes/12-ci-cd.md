@@ -23,7 +23,7 @@ keypoints:
 
 ## Introduction to CI/CD
 
-Continuous Integration (CI) and Continuous Delivery/Deployment (CD) are practices that automate key parts of software development. In GitLab, this automation is defined in a file called `.gitlab-ci.yml`.
+Continuous Integration (CI) and Continuous Delivery/Deployment (CD) are practices that automate key parts of software development. In GitLab, this automation is defined in a file called `.gitlab-ci.yml`. You simply create one inside your local repo and push it to the remote, and the pipeline is configured.
 
 When changes are pushed to the repository, GitLab can automatically create a pipeline. The jobs in that pipeline are then picked up by available runners. In our setup, those jobs are executed by runners on our GitLab Runner server.
 
@@ -34,6 +34,8 @@ CI/CD helps teams work more reliably by automating routine checks and reducing m
 - **Runners** are the agents that execute pipeline jobs such as build, test, and deploy tasks.
 
 This means that a simple `git push` can trigger a chain of automated steps, helping teams detect problems early and get faster feedback on their changes.
+
+![screenshot of successful test](../fig/test_runner.png)
 
 ## Why is it useful?
 

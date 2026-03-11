@@ -77,6 +77,7 @@ In either case, your Merge Request will update automatically once you have pushe
 > 1. **Fork** [this
 > repository](https://gitlab.scicom.picr.man.ac.uk/skitcatt/paper)
 > by  clicking on the `Fork` button at the top right of the page.
+> ![screenshot of fork button](../fig/fork-a-repo.png)
 >
 > 1. Navigate back to your home directory so you don't clone into an existing repo
 > in the next step
