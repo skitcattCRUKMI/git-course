@@ -223,7 +223,7 @@ $ git remote -v
 ```
 {: .language-bash}
 
-[GitHub]: https://github.com/
+[GitLab]: https://gitlab.scicom.picr.man.ac.uk
 [add-results]: https://github.com/gcapes/git-course-paper/commit/0c4573e5ea15d6f5dc877e8db8c0696e7675d5ed
 [citable-code]: https://docs.github.com/en/repositories/archiving-a-github-repository/referencing-and-citing-content
 [MIT-licence]: https://choosealicense.com/licenses/mit/
