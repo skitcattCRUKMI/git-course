@@ -297,24 +297,6 @@ $ git pull origin main	# Merge remote branch into local
 ```
 {: .language-bash}
 
-> ## Collaborating on a remote repository
->
-> In this exercise you should work with a partner or a group of three.
-> One of you should give access to your remote repository on GitHub to
-> the others (by selecting `Settings tab -> Access -> Collaborators`).
-> ![](../fig/repo-settings.png)
-> The invited person should then check their email to accept the invitation.
->
-> Now those of you who are added as collaborators should clone the repository of
-> the first person on your machines. (make sure that you **don't clone into
-> a directory that is already a repository**!)
->
-> Each of you should now make some changes to the files in the repository
-> e.g. fix a typo, add a file containing supplementary material.
-> Commit the changes and then push them back to the remote repository.
-> Remember to pull changes before you push.
-{: .challenge}
-
 > ## Creating branches and sharing them in the remote repository
 >
 > Working with the same remote repository, each of you should create a new branch
